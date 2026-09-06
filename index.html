@@ -1,0 +1,3287 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Soru Mukkiyam Bigiluu</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#05070d;
+    color:white;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    height:75px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#05070df5;
+
+    border-bottom:1px solid #12345a;
+}
+
+.logo{
+    color:#168cff;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:white;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav ul a{
+    color:white;
+    text-decoration:none;
+}
+
+nav ul a:hover{
+    color:#168cff;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.edit-site-btn,
+.cart-button{
+    border:0;
+    color:white;
+    padding:10px 17px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.edit-site-btn{
+    background:#10243d;
+    border:1px solid #168cff;
+}
+
+.cart-button{
+    background:#168cff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:75vh;
+
+    padding:70px 8%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:50px;
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            #063b70,
+            transparent 35%
+        ),
+        #05070d;
+}
+
+.hero-text{
+    max-width:650px;
+}
+
+.tag{
+    display:inline-block;
+
+    color:#168cff;
+
+    border:1px solid #168cff;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:58px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#168cff;
+}
+
+.hero p{
+    color:#aeb8c8;
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+
+    padding:14px 28px;
+
+    background:#168cff;
+    color:white;
+
+    border:0;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.hero-image{
+    width:410px;
+    height:410px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:5px solid #168cff66;
+
+    box-shadow:0 0 70px #168cff66;
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    padding:90px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:42px;
+}
+
+.section-title span{
+    color:#168cff;
+}
+
+.section-title p{
+    color:#8995a7;
+    margin-top:10px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+    max-width:650px;
+
+    margin:0 auto 30px;
+
+    padding:15px 20px;
+
+    background:#0b101b;
+
+    border:1px solid #168cff;
+
+    border-radius:35px;
+}
+
+.search-box input{
+    width:100%;
+
+    background:transparent;
+
+    border:0;
+    outline:0;
+
+    color:white;
+
+    font-size:16px;
+}
+
+.search-box input::placeholder{
+    color:#687487;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.categories{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:40px;
+}
+
+.category-btn{
+    background:#0b101b;
+
+    color:#aeb8c8;
+
+    border:1px solid #203451;
+
+    padding:10px 18px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+}
+
+.category-btn.active,
+.category-btn:hover{
+    background:#168cff;
+    color:white;
+}
+
+
+/* =========================
+   ADD FOOD
+========================= */
+
+.add-food-area{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.add-food-btn{
+    background:#168cff;
+    color:white;
+
+    border:0;
+
+    padding:13px 25px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    font-size:15px;
+}
+
+
+/* =========================
+   FOOD GRID
+========================= */
+
+.food-container{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:25px;
+}
+
+.food-card{
+    overflow:hidden;
+
+    background:#0b101b;
+
+    border:1px solid #14233b;
+
+    border-radius:20px;
+
+    transition:.3s;
+}
+
+.food-card:hover{
+    transform:translateY(-6px);
+
+    border-color:#168cff;
+
+    box-shadow:
+        0 15px 40px #168cff22;
+}
+
+
+/* =========================
+   FOOD IMAGE
+========================= */
+
+.food-img{
+    width:100%;
+    height:210px;
+    overflow:hidden;
+}
+
+.food-img img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.4s;
+}
+
+.food-card:hover .food-img img{
+    transform:scale(1.06);
+}
+
+
+/* =========================
+   IMAGE EDIT
+========================= */
+
+.image-editor{
+    padding:10px 15px;
+
+    background:#07101e;
+
+    text-align:center;
+}
+
+.upload-label{
+    display:inline-block;
+
+    background:#10243d;
+
+    border:1px solid #168cff;
+
+    color:#168cff;
+
+    padding:7px 13px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-size:12px;
+}
+
+.upload-label:hover{
+    background:#168cff;
+    color:white;
+}
+
+.upload-label input{
+    display:none;
+}
+
+
+/* =========================
+   FOOD INFO
+========================= */
+
+.food-info{
+    padding:20px;
+}
+
+.food-category{
+    color:#168cff;
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.food-info h3{
+    margin:8px 0;
+
+    font-size:21px;
+}
+
+.food-info p{
+    color:#8995a7;
+
+    line-height:1.5;
+
+    margin-bottom:15px;
+}
+
+.food-bottom{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:10px;
+}
+
+.price{
+    color:#168cff;
+
+    font-size:21px;
+
+    font-weight:bold;
+}
+
+.add-btn{
+    border:0;
+
+    background:#168cff;
+
+    color:white;
+
+    padding:10px 17px;
+
+    border-radius:22px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   EDIT INPUTS
+========================= */
+
+.edit-input{
+    width:100%;
+
+    background:#05070d;
+
+    color:white;
+
+    border:1px solid #263750;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    margin:5px 0;
+
+    outline:none;
+}
+
+.edit-input:focus{
+    border-color:#168cff;
+}
+
+.save-food{
+    width:100%;
+
+    margin-top:10px;
+
+    padding:10px;
+
+    border:1px solid #168cff;
+
+    background:transparent;
+
+    color:#168cff;
+
+    border-radius:20px;
+
+    cursor:pointer;
+}
+
+.save-food:hover{
+    background:#168cff;
+    color:white;
+}
+
+.delete-food{
+    width:100%;
+
+    margin-top:8px;
+
+    padding:10px;
+
+    border:1px solid #ff3d5a;
+
+    background:transparent;
+
+    color:#ff3d5a;
+
+    border-radius:20px;
+
+    cursor:pointer;
+}
+
+.delete-food:hover{
+    background:#ff3d5a;
+    color:white;
+}
+
+
+/* =========================
+   OFFER
+========================= */
+
+.offer{
+    margin:20px 7%;
+
+    padding:55px 30px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            120deg,
+            #071b35,
+            #0b101b
+        );
+
+    border:1px solid #143c69;
+
+    border-radius:25px;
+}
+
+.offer h2{
+    font-size:35px;
+
+    margin-bottom:15px;
+}
+
+.offer span{
+    color:#168cff;
+}
+
+.offer p{
+    color:#aeb8c8;
+
+    margin-bottom:25px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    padding:90px 7%;
+
+    text-align:center;
+
+    background:#080b14;
+}
+
+.contact h2{
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+.contact span{
+    color:#168cff;
+}
+
+.contact p{
+    color:#9ba7b8;
+
+    margin-bottom:25px;
+}
+
+
+/* =========================
+   CART
+========================= */
+
+.cart-overlay{
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    background:#000b;
+
+    display:none;
+}
+
+.cart-overlay.active{
+    display:block;
+}
+
+.cart-box{
+    position:absolute;
+
+    right:0;
+    top:0;
+
+    width:430px;
+
+    max-width:100%;
+
+    height:100%;
+
+    padding:25px;
+
+    background:#080b14;
+
+    border-left:1px solid #168cff;
+
+    overflow-y:auto;
+}
+
+.cart-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.cart-header h2{
+    color:#168cff;
+}
+
+.close-cart{
+    background:transparent;
+
+    border:0;
+
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+}
+
+.cart-item{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #172238;
+}
+
+.cart-item small{
+    color:#168cff;
+}
+
+.quantity{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.quantity button{
+    width:28px;
+    height:28px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#168cff;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.cart-total{
+    margin-top:25px;
+
+    padding-top:20px;
+
+    border-top:1px solid #263750;
+}
+
+.total-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+}
+
+.grand-total{
+    color:#168cff;
+
+    font-size:23px;
+
+    font-weight:bold;
+}
+
+.checkout-btn{
+    width:100%;
+
+    padding:15px;
+
+    border:0;
+
+    border-radius:30px;
+
+    background:#168cff;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    background:#000d;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:500px;
+
+    max-width:100%;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    padding:30px;
+
+    background:#0b101b;
+
+    border:1px solid #168cff;
+
+    border-radius:20px;
+}
+
+.modal-box h2{
+    color:#168cff;
+
+    margin-bottom:20px;
+}
+
+.modal-box input,
+.modal-box textarea,
+.modal-box select{
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:15px;
+
+    background:#05070d;
+
+    border:1px solid #203451;
+
+    color:white;
+
+    border-radius:10px;
+
+    outline:0;
+}
+
+.modal-box select option{
+    background:#05070d;
+    color:white;
+}
+
+.modal-actions{
+    display:flex;
+
+    gap:10px;
+}
+
+.cancel-btn,
+.confirm-btn{
+    width:50%;
+
+    padding:14px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+.cancel-btn{
+    background:transparent;
+
+    color:white;
+
+    border:1px solid #34435a;
+}
+
+.confirm-btn{
+    border:0;
+
+    background:#168cff;
+
+    color:white;
+}
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success-box{
+    text-align:center;
+}
+
+.success-box h2{
+    color:#168cff;
+}
+
+.success-box p{
+    color:#aeb8c8;
+
+    line-height:1.6;
+
+    margin:15px 0 25px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:30px;
+
+    text-align:center;
+
+    color:#687487;
+
+    border-top:1px solid #111d35;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:950px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .hero-image{
+        width:300px;
+        height:300px;
+    }
+
+    .food-container{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+}
+
+
+@media(max-width:600px){
+
+    .food-container{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:60px 5%;
+    }
+
+    .hero{
+        padding:50px 5%;
+    }
+
+    .offer{
+        margin:20px;
+    }
+
+    .edit-site-btn{
+        display:none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+
+        SORU
+        <span>MUKKIYAM BIGILUU</span>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#menu">Menu</a>
+        </li>
+
+        <li>
+            <a href="#offers">Offers</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+
+    <div class="nav-right">
+
+        <button
+            class="edit-site-btn"
+            onclick="toggleEditing()">
+
+            Edit
+
+        </button>
+
+
+        <button
+            class="cart-button"
+            onclick="openCart()">
+
+            Cart
+            (<span id="cartCount">0</span>)
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section
+    class="hero"
+    id="home">
+
+
+    <div class="hero-text">
+
+        <div class="tag">
+            HOT & FRESH
+        </div>
+
+
+        <h1>
+
+            Soru Mukkiyam.<br>
+
+            <span>
+                Bigiluu Mukkiyam!
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            Biryani-la irundhu Coffee
+            varaikum, unga favourite
+            food ellame ore place-la.
+
+        </p>
+
+
+        <a
+            href="#menu"
+            class="btn">
+
+            Explore Menu
+
+        </a>
+
+    </div>
+
+
+
+    <div class="hero-image">
+
+        <img
+            id="heroImage"
+            src="https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=900&q=85"
+            alt="Food">
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<section
+    class="section"
+    id="menu">
+
+
+    <div class="section-title">
+
+        <h2>
+
+            Enga
+            <span>Food Menu</span>
+
+        </h2>
+
+
+        <p>
+
+            Search pannunga
+            or category choose pannunga.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            id="foodSearch"
+            type="text"
+            placeholder="Search Biryani, Pizza, Coffee...">
+
+    </div>
+
+
+
+    <!-- CATEGORIES -->
+
+    <div class="categories">
+
+        <button
+            class="category-btn active"
+            onclick="filterCategory('all',this)">
+
+            All
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('biryani',this)">
+
+            Biryani
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('parotta',this)">
+
+            Parotta
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('icecream',this)">
+
+            Ice Cream
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('juice',this)">
+
+            Juice
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('dessert',this)">
+
+            Dessert
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('pizza',this)">
+
+            Pizza
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('burger',this)">
+
+            Burger
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('tea',this)">
+
+            Tea
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('coffee',this)">
+
+            Coffee
+
+        </button>
+
+    </div>
+
+
+
+    <!-- ADD FOOD -->
+
+    <div
+        class="add-food-area"
+        id="addFoodArea">
+
+        <button
+            class="add-food-btn"
+            onclick="openAddFood()">
+
+            + Add New Food
+
+        </button>
+
+    </div>
+
+
+
+    <!-- FOOD CARDS -->
+
+    <div
+        class="food-container"
+        id="foodContainer">
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     OFFER
+========================= -->
+
+<section
+    class="offer"
+    id="offers">
+
+
+    <h2>
+
+        First Order-ku
+
+        <span>
+            20% OFF!
+        </span>
+
+    </h2>
+
+
+    <p>
+
+        Coupon Code:
+
+        <span>
+            BIGIL20
+        </span>
+
+    </p>
+
+
+    <a
+        href="#menu"
+        class="btn">
+
+        Order Now
+
+    </a>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+    class="contact"
+    id="contact">
+
+
+    <h2>
+
+        Pasikkudha?
+
+        <span>
+            Don't Wait!
+        </span>
+
+    </h2>
+
+
+    <p>
+
+        Soru Mukkiyam Bigiluu-la
+        unga favourite food-a
+        order pannunga!
+
+    </p>
+
+
+    <a
+        href="mailto:hello@example.com"
+        class="btn">
+
+        Contact Us
+
+    </a>
+
+</section>
+
+
+
+<!-- =========================
+     ADD FOOD MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="addFoodModal">
+
+
+    <div class="modal-box">
+
+
+        <h2>
+            Add New Food
+        </h2>
+
+
+        <input
+            id="newFoodName"
+            type="text"
+            placeholder="Food Name">
+
+
+        <select
+            id="newFoodCategory">
+
+            <option value="biryani">
+                Biryani
+            </option>
+
+            <option value="parotta">
+                Parotta
+            </option>
+
+            <option value="icecream">
+                Ice Cream
+            </option>
+
+            <option value="juice">
+                Juice
+            </option>
+
+            <option value="dessert">
+                Dessert
+            </option>
+
+            <option value="pizza">
+                Pizza
+            </option>
+
+            <option value="burger">
+                Burger
+            </option>
+
+            <option value="tea">
+                Tea
+            </option>
+
+            <option value="coffee">
+                Coffee
+            </option>
+
+        </select>
+
+
+        <textarea
+            id="newFoodDescription"
+            rows="3"
+            placeholder="Food Description"></textarea>
+
+
+        <input
+            id="newFoodPrice"
+            type="number"
+            placeholder="Price">
+
+
+        <input
+            id="newFoodImage"
+            type="file"
+            accept="image/*">
+
+
+        <div class="modal-actions">
+
+
+            <button
+                class="cancel-btn"
+                onclick="closeAddFood()">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                class="confirm-btn"
+                onclick="addNewFood()">
+
+                Add Food
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     CART
+========================= -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay">
+
+
+    <div class="cart-box">
+
+
+        <div class="cart-header">
+
+            <h2>
+                Your Cart
+            </h2>
+
+
+            <button
+                class="close-cart"
+                onclick="closeCart()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div id="cartItems"></div>
+
+
+        <div class="cart-total">
+
+
+            <div class="total-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span id="subtotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="total-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <span id="delivery">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div
+                class="total-row grand-total">
+
+                <span>
+                    Total
+                </span>
+
+                <span id="total">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <button
+                class="checkout-btn"
+                onclick="openCheckout()">
+
+                Proceed to Checkout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     CHECKOUT MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="checkoutModal">
+
+
+    <div class="modal-box">
+
+
+        <h2>
+            Checkout
+        </h2>
+
+
+        <input
+            id="customerName"
+            type="text"
+            placeholder="Your Name">
+
+
+        <input
+            id="customerPhone"
+            type="tel"
+            placeholder="Phone Number">
+
+
+        <textarea
+            id="customerAddress"
+            rows="4"
+            placeholder="Delivery Address"></textarea>
+
+
+        <div class="modal-actions">
+
+
+            <button
+                class="cancel-btn"
+                onclick="closeCheckout()">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                class="confirm-btn"
+                onclick="placeOrder()">
+
+                Place Order
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     SUCCESS MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="successModal">
+
+
+    <div
+        class="modal-box success-box">
+
+
+        <h2>
+            Order Placed!
+        </h2>
+
+
+        <p>
+
+            Unga food order
+            successfully placed.
+
+            <br><br>
+
+            Thank you for ordering!
+
+        </p>
+
+
+        <button
+            class="btn"
+            onclick="closeSuccess()">
+
+            Done
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <strong>
+        SORU MUKKIYAM BIGILUU
+    </strong>
+
+    <br><br>
+
+    Saapadu dhaan first priority!
+
+    <br><br>
+
+    © 2026 All Rights Reserved.
+
+</footer>
+
+
+
+<script>
+
+/* ==================================
+   DEFAULT FOOD DATA
+================================== */
+
+const defaultFoods = [
+
+{
+    id:1,
+    category:"biryani",
+    name:"Chicken Biryani",
+    description:"Dum-style chicken biryani with special masala.",
+    price:180,
+    image:"https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:2,
+    category:"biryani",
+    name:"Mutton Biryani",
+    description:"Tender mutton with aromatic basmati rice.",
+    price:260,
+    image:"https://images.unsplash.com/photo-1631515242808-497c3fbd3972?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:3,
+    category:"biryani",
+    name:"Egg Biryani",
+    description:"Spicy biryani served with perfectly cooked eggs.",
+    price:140,
+    image:"https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:4,
+    category:"biryani",
+    name:"Beef Biryani",
+    description:"Rich and spicy biryani with tender beef.",
+    price:220,
+    image:"https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:5,
+    category:"parotta",
+    name:"Plain Parotta",
+    description:"Soft and flaky South Indian style parotta.",
+    price:40,
+    image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:6,
+    category:"parotta",
+    name:"Kothu Parotta",
+    description:"Chopped parotta tossed with spicy masala and egg.",
+    price:120,
+    image:"https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:7,
+    category:"parotta",
+    name:"Chicken Kothu",
+    description:"Chicken, parotta and masala mixed together perfectly.",
+    price:160,
+    image:"https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:8,
+    category:"parotta",
+    name:"Egg Parotta",
+    description:"Flaky parotta with tasty egg masala.",
+    price:90,
+    image:"https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:9,
+    category:"icecream",
+    name:"Vanilla Ice Cream",
+    description:"Classic creamy vanilla ice cream.",
+    price:80,
+    image:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:10,
+    category:"icecream",
+    name:"Chocolate Ice Cream",
+    description:"Rich chocolate flavour with creamy texture.",
+    price:100,
+    image:"https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:11,
+    category:"icecream",
+    name:"Strawberry Ice Cream",
+    description:"Creamy strawberry flavoured ice cream.",
+    price:90,
+    image:"https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:12,
+    category:"juice",
+    name:"Mango Juice",
+    description:"Fresh mango juice served chilled.",
+    price:90,
+    image:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:13,
+    category:"juice",
+    name:"Orange Juice",
+    description:"Freshly squeezed orange juice.",
+    price:80,
+    image:"https://images.unsplash.com/photo-1601039641847-7857b994d704?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:14,
+    category:"juice",
+    name:"Watermelon Juice",
+    description:"Cool and refreshing watermelon juice.",
+    price:70,
+    image:"https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:15,
+    category:"juice",
+    name:"Pineapple Juice",
+    description:"Fresh tropical pineapple juice.",
+    price:90,
+    image:"https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:16,
+    category:"dessert",
+    name:"Chocolate Cake",
+    description:"Soft chocolate cake with rich chocolate topping.",
+    price:130,
+    image:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:17,
+    category:"dessert",
+    name:"Chocolate Brownie",
+    description:"Warm chocolate brownie with rich flavour.",
+    price:120,
+    image:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:18,
+    category:"dessert",
+    name:"Gulab Jamun",
+    description:"Soft and sweet gulab jamun served warm.",
+    price:80,
+    image:"https://images.unsplash.com/photo-1666190094760-9a7e1d5a3d9c?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:19,
+    category:"pizza",
+    name:"Cheese Pizza",
+    description:"Extra cheesy pizza with delicious toppings.",
+    price:249,
+    image:"https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:20,
+    category:"pizza",
+    name:"Chicken Pizza",
+    description:"Chicken loaded pizza with extra cheese.",
+    price:299,
+    image:"https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:21,
+    category:"pizza",
+    name:"Pepperoni Pizza",
+    description:"Cheesy pizza topped with pepperoni.",
+    price:329,
+    image:"https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:22,
+    category:"burger",
+    name:"Chicken Burger",
+    description:"Juicy chicken patty with cheese and special sauce.",
+    price:149,
+    image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:23,
+    category:"burger",
+    name:"Double Cheese Burger",
+    description:"Double patty with double cheese and special sauce.",
+    price:199,
+    image:"https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:24,
+    category:"burger",
+    name:"Veg Burger",
+    description:"Crispy veg patty with fresh vegetables.",
+    price:119,
+    image:"https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:25,
+    category:"tea",
+    name:"Normal Tea",
+    description:"Hot and refreshing Indian tea.",
+    price:25,
+    image:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:26,
+    category:"tea",
+    name:"Ginger Tea",
+    description:"Hot tea with fresh ginger flavour.",
+    price:35,
+    image:"https://images.unsplash.com/photo-1597318181409-cf64d0c6f8c4?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:27,
+    category:"tea",
+    name:"Masala Tea",
+    description:"Spiced Indian tea with aromatic flavours.",
+    price:40,
+    image:"https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:28,
+    category:"coffee",
+    name:"Filter Coffee",
+    description:"Strong South Indian filter coffee.",
+    price:40,
+    image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:29,
+    category:"coffee",
+    name:"Cold Coffee",
+    description:"Chilled creamy coffee with chocolate flavour.",
+    price:100,
+    image:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id:30,
+    category:"coffee",
+    name:"Cappuccino",
+    description:"Creamy cappuccino with smooth coffee flavour.",
+    price:130,
+    image:"https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=800&q=85"
+}
+
+];
+
+
+/* ==================================
+   LOAD DATA
+================================== */
+
+let foods =
+    JSON.parse(
+        localStorage.getItem("bigiluuFoods")
+    ) || defaultFoods;
+
+
+/* ==================================
+   EDIT MODE
+================================== */
+
+let editing = false;
+
+function toggleEditing(){
+
+    editing = !editing;
+
+    document
+        .getElementById("addFoodArea")
+        .style.display =
+        editing ? "block" : "none";
+
+    renderFoods();
+
+}
+
+
+/* ==================================
+   SAVE FOOD DATA
+================================== */
+
+function saveFoods(){
+
+    localStorage.setItem(
+        "bigiluuFoods",
+        JSON.stringify(foods)
+    );
+
+}
+
+
+/* ==================================
+   ESCAPE TEXT
+================================== */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ==================================
+   RENDER FOOD CARDS
+================================== */
+
+function renderFoods(){
+
+    const container =
+        document.getElementById(
+            "foodContainer"
+        );
+
+    container.innerHTML = "";
+
+
+    foods.forEach(food => {
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "food-card";
+
+
+        card.dataset.category =
+            food.category;
+
+
+        card.dataset.name =
+            food.name.toLowerCase();
+
+
+        if(editing){
+
+            card.innerHTML = `
+
+                <div class="food-img">
+
+                    <img
+                        id="image-${food.id}"
+                        src="${food.image}"
+                        alt="${escapeHTML(food.name)}">
+
+                </div>
+
+
+                <div class="image-editor">
+
+                    <label class="upload-label">
+
+                        Change Image
+
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onchange="changeImage(event,${food.id})">
+
+                    </label>
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <span class="food-category">
+
+                        ${escapeHTML(food.category)}
+
+                    </span>
+
+
+                    <input
+                        class="edit-input"
+                        id="name-${food.id}"
+                        value="${escapeHTML(food.name)}"
+                        placeholder="Food Name">
+
+
+                    <textarea
+                        class="edit-input"
+                        id="description-${food.id}"
+                        rows="3"
+                        placeholder="Description">${escapeHTML(food.description)}</textarea>
+
+
+                    <input
+                        class="edit-input"
+                        id="price-${food.id}"
+                        type="number"
+                        value="${food.price}"
+                        placeholder="Price">
+
+
+                    <button
+                        class="save-food"
+                        onclick="saveFood(${food.id})">
+
+                        Save Changes
+
+                    </button>
+
+
+                    <button
+                        class="delete-food"
+                        onclick="deleteFood(${food.id})">
+
+                        Delete Food
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+
+        else{
+
+            card.innerHTML = `
+
+                <div class="food-img">
+
+                    <img
+                        src="${food.image}"
+                        alt="${escapeHTML(food.name)}">
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <span class="food-category">
+
+                        ${escapeHTML(food.category)}
+
+                    </span>
+
+
+                    <h3>
+                        ${escapeHTML(food.name)}
+                    </h3>
+
+
+                    <p>
+                        ${escapeHTML(food.description)}
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+
+                            ₹${food.price}
+
+                        </span>
+
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart(${food.id})">
+
+                            Add +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+        container.appendChild(card);
+
+    });
+
+
+    filterFoods();
+
+}
+
+
+/* ==================================
+   CHANGE IMAGE
+================================== */
+
+function changeImage(event,id){
+
+    const file =
+        event.target.files[0];
+
+
+    if(!file){
+        return;
+    }
+
+
+    if(!file.type.startsWith("image/")){
+
+        alert(
+            "Image file mattum select pannunga!"
+        );
+
+        return;
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload = function(e){
+
+        const food =
+            foods.find(
+                item => item.id === id
+            );
+
+
+        if(!food){
+            return;
+        }
+
+
+        food.image =
+            e.target.result;
+
+
+        document
+            .getElementById(
+                "image-"+id
+            )
+            .src =
+            e.target.result;
+
+
+        saveFoods();
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* ==================================
+   SAVE EDITED FOOD
+================================== */
+
+function saveFood(id){
+
+    const food =
+        foods.find(
+            item => item.id === id
+        );
+
+
+    if(!food){
+        return;
+    }
+
+
+    const name =
+        document
+            .getElementById(
+                "name-"+id
+            )
+            .value
+            .trim();
+
+
+    const description =
+        document
+            .getElementById(
+                "description-"+id
+            )
+            .value
+            .trim();
+
+
+    const price =
+        Number(
+            document
+                .getElementById(
+                    "price-"+id
+                )
+                .value
+        );
+
+
+    if(
+        name === "" ||
+        description === "" ||
+        price <= 0
+    ){
+
+        alert(
+            "Food details correct-ah fill pannunga!"
+        );
+
+        return;
+    }
+
+
+    food.name =
+        name;
+
+
+    food.description =
+        description;
+
+
+    food.price =
+        price;
+
+
+    saveFoods();
+
+    renderFoods();
+
+
+    alert(
+        "Food details saved!"
+    );
+
+}
+
+
+/* ==================================
+   DELETE FOOD
+================================== */
+
+function deleteFood(id){
+
+    const food =
+        foods.find(
+            item => item.id === id
+        );
+
+
+    if(!food){
+        return;
+    }
+
+
+    const answer =
+        confirm(
+            food.name +
+            " delete pannalama?"
+        );
+
+
+    if(!answer){
+        return;
+    }
+
+
+    foods =
+        foods.filter(
+            item => item.id !== id
+        );
+
+
+    saveFoods();
+
+    renderFoods();
+
+}
+
+
+/* ==================================
+   ADD FOOD MODAL
+================================== */
+
+function openAddFood(){
+
+    document
+        .getElementById(
+            "addFoodModal"
+        )
+        .classList.add("active");
+
+}
+
+
+function closeAddFood(){
+
+    document
+        .getElementById(
+            "addFoodModal"
+        )
+        .classList.remove("active");
+
+}
+
+
+/* ==================================
+   ADD NEW FOOD
+================================== */
+
+function addNewFood(){
+
+    const name =
+        document
+            .getElementById(
+                "newFoodName"
+            )
+            .value
+            .trim();
+
+
+    const category =
+        document
+            .getElementById(
+                "newFoodCategory"
+            )
+            .value;
+
+
+    const description =
+        document
+            .getElementById(
+                "newFoodDescription"
+            )
+            .value
+            .trim();
+
+
+    const price =
+        Number(
+            document
+                .getElementById(
+                    "newFoodPrice"
+                )
+                .value
+        );
+
+
+    const imageInput =
+        document.getElementById(
+            "newFoodImage"
+        );
+
+
+    if(
+        name === "" ||
+        description === "" ||
+        price <= 0
+    ){
+
+        alert(
+            "Food name, description and price fill pannunga!"
+        );
+
+        return;
+    }
+
+
+    /* NO IMAGE */
+
+    if(
+        imageInput.files.length === 0
+    ){
+
+        createFood(
+            name,
+            category,
+            description,
+            price,
+            "https://via.placeholder.com/800x500/07101e/168cff?text=Food"
+        );
+
+        return;
+    }
+
+
+    /* IMAGE SELECTED */
+
+    const file =
+        imageInput.files[0];
+
+
+    if(!file.type.startsWith("image/")){
+
+        alert(
+            "Image file mattum select pannunga!"
+        );
+
+        return;
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(e){
+
+            createFood(
+                name,
+                category,
+                description,
+                price,
+                e.target.result
+            );
+
+        };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* ==================================
+   CREATE FOOD
+================================== */
+
+function createFood(
+    name,
+    category,
+    description,
+    price,
+    image
+){
+
+    const newFood = {
+
+        id:Date.now(),
+
+        category:category,
+
+        name:name,
+
+        description:description,
+
+        price:price,
+
+        image:image
+
+    };
+
+
+    foods.push(
+        newFood
+    );
+
+
+    saveFoods();
+
+
+    closeAddFood();
+
+
+    document
+        .getElementById(
+            "newFoodName"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "newFoodDescription"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "newFoodPrice"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "newFoodImage"
+        )
+        .value = "";
+
+
+    renderFoods();
+
+
+    alert(
+        name +
+        " successfully added!"
+    );
+
+}
+
+
+/* ==================================
+   SEARCH
+================================== */
+
+let selectedCategory =
+    "all";
+
+
+document
+    .getElementById(
+        "foodSearch"
+    )
+    .addEventListener(
+        "input",
+        filterFoods
+    );
+
+
+function filterFoods(){
+
+    const search =
+        document
+            .getElementById(
+                "foodSearch"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    document
+        .querySelectorAll(
+            ".food-card"
+        )
+        .forEach(card => {
+
+            const category =
+                card.dataset.category;
+
+
+            const name =
+                card.dataset.name;
+
+
+            const text =
+                card.innerText
+                    .toLowerCase();
+
+
+            const categoryMatch =
+                selectedCategory === "all"
+                ||
+                category ===
+                selectedCategory;
+
+
+            const searchMatch =
+                name.includes(search)
+                ||
+                text.includes(search);
+
+
+            card.style.display =
+                categoryMatch &&
+                searchMatch
+                ? ""
+                : "none";
+
+        });
+
+}
+
+
+/* ==================================
+   CATEGORY FILTER
+================================== */
+
+function filterCategory(
+    category,
+    button
+){
+
+    selectedCategory =
+        category;
+
+
+    document
+        .querySelectorAll(
+            ".category-btn"
+        )
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    filterFoods();
+
+}
+
+
+/* ==================================
+   CART
+================================== */
+
+let cart = [];
+
+
+function addToCart(id){
+
+    const food =
+        foods.find(
+            item => item.id === id
+        );
+
+
+    if(!food){
+        return;
+    }
+
+
+    const existing =
+        cart.find(
+            item => item.id === id
+        );
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }
+
+    else{
+
+        cart.push({
+
+            id:food.id,
+
+            name:food.name,
+
+            price:Number(food.price),
+
+            quantity:1
+
+        });
+
+    }
+
+
+    updateCart();
+
+
+    alert(
+        food.name +
+        " added to cart!"
+    );
+
+}
+
+
+/* ==================================
+   QUANTITY
+================================== */
+
+function changeQuantity(
+    index,
+    amount
+){
+
+    cart[index].quantity +=
+        amount;
+
+
+    if(
+        cart[index].quantity <= 0
+    ){
+
+        cart.splice(
+            index,
+            1
+        );
+
+    }
+
+
+    updateCart();
+
+}
+
+
+/* ==================================
+   UPDATE CART
+================================== */
+
+function updateCart(){
+
+    const items =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    items.innerHTML = "";
+
+
+    let subtotal = 0;
+
+    let count = 0;
+
+
+    if(cart.length === 0){
+
+        items.innerHTML = `
+
+            <div
+                style="
+                    text-align:center;
+                    color:#718096;
+                    margin-top:60px;
+                ">
+
+                Cart is empty!
+
+            </div>
+
+        `;
+
+    }
+
+
+    cart.forEach(
+        (item,index) => {
+
+            subtotal +=
+                item.price *
+                item.quantity;
+
+
+            count +=
+                item.quantity;
+
+
+            items.innerHTML += `
+
+                <div class="cart-item">
+
+                    <div>
+
+                        <strong>
+
+                            ${escapeHTML(
+                                item.name
+                            )}
+
+                        </strong>
+
+                        <br>
+
+                        <small>
+
+                            ₹${item.price}
+
+                        </small>
+
+                    </div>
+
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="
+                                changeQuantity(
+                                    ${index},
+                                    -1
+                                )
+                            ">
+
+                            -
+
+                        </button>
+
+
+                        <span>
+
+                            ${item.quantity}
+
+                        </span>
+
+
+                        <button
+                            onclick="
+                                changeQuantity(
+                                    ${index},
+                                    1
+                                )
+                            ">
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    const delivery =
+        cart.length > 0
+        ? 40
+        : 0;
+
+
+    document
+        .getElementById(
+            "cartCount"
+        )
+        .innerText =
+        count;
+
+
+    document
+        .getElementById(
+            "subtotal"
+        )
+        .innerText =
+        "₹" + subtotal;
+
+
+    document
+        .getElementById(
+            "delivery"
+        )
+        .innerText =
+        "₹" + delivery;
+
+
+    document
+        .getElementById(
+            "total"
+        )
+        .innerText =
+        "₹" +
+        (
+            subtotal +
+            delivery
+        );
+
+}
+
+
+/* ==================================
+   CART OPEN / CLOSE
+================================== */
+
+function openCart(){
+
+    document
+        .getElementById(
+            "cartOverlay"
+        )
+        .classList.add(
+            "active"
+        );
+
+}
+
+
+function closeCart(){
+
+    document
+        .getElementById(
+            "cartOverlay"
+        )
+        .classList.remove(
+            "active"
+        );
+
+}
+
+
+/* ==================================
+   CHECKOUT
+================================== */
+
+function openCheckout(){
+
+    if(
+        cart.length === 0
+    ){
+
+        alert(
+            "First food add pannunga!"
+        );
+
+        return;
+    }
+
+
+    document
+        .getElementById(
+            "checkoutModal"
+        )
+        .classList.add(
+            "active"
+        );
+
+}
+
+
+function closeCheckout(){
+
+    document
+        .getElementById(
+            "checkoutModal"
+        )
+        .classList.remove(
+            "active"
+        );
+
+}
+
+
+/* ==================================
+   PLACE ORDER
+================================== */
+
+function placeOrder(){
+
+    const name =
+        document
+            .getElementById(
+                "customerName"
+            )
+            .value
+            .trim();
+
+
+    const phone =
+        document
+            .getElementById(
+                "customerPhone"
+            )
+            .value
+            .trim();
+
+
+    const address =
+        document
+            .getElementById(
+                "customerAddress"
+            )
+            .value
+            .trim();
+
+
+    if(
+        name === "" ||
+        phone === "" ||
+        address === ""
+    ){
+
+        alert(
+            "All details fill pannunga!"
+        );
+
+        return;
+    }
+
+
+    closeCheckout();
+
+    closeCart();
+
+
+    document
+        .getElementById(
+            "successModal"
+        )
+        .classList.add(
+            "active"
+        );
+
+
+    cart = [];
+
+
+    updateCart();
+
+}
+
+
+/* ==================================
+   SUCCESS CLOSE
+================================== */
+
+function closeSuccess(){
+
+    document
+        .getElementById(
+            "successModal"
+        )
+        .classList.remove(
+            "active"
+        );
+
+}
+
+
+/* ==================================
+   HERO IMAGE EDIT
+================================== */
+
+document
+    .getElementById(
+        "heroImage"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            if(!editing){
+                return;
+            }
+
+
+            const input =
+                document.createElement(
+                    "input"
+                );
+
+
+            input.type =
+                "file";
+
+
+            input.accept =
+                "image/*";
+
+
+            input.onchange =
+                function(event){
+
+                    const file =
+                        event.target.files[0];
+
+
+                    if(!file){
+                        return;
+                    }
+
+
+                    const reader =
+                        new FileReader();
+
+
+                    reader.onload =
+                        function(e){
+
+                            document
+                                .getElementById(
+                                    "heroImage"
+                                )
+                                .src =
+                                e.target.result;
+
+
+                            localStorage.setItem(
+                                "bigiluuHeroImage",
+                                e.target.result
+                            );
+
+                        };
+
+
+                    reader.readAsDataURL(
+                        file
+                    );
+
+                };
+
+
+            input.click();
+
+        }
+    );
+
+
+/* ==================================
+   LOAD HERO IMAGE
+================================== */
+
+const savedHero =
+    localStorage.getItem(
+        "bigiluuHeroImage"
+    );
+
+
+if(savedHero){
+
+    document
+        .getElementById(
+            "heroImage"
+        )
+        .src =
+        savedHero;
+
+}
+
+
+/* ==================================
+   INITIAL LOAD
+================================== */
+
+document
+    .getElementById(
+        "addFoodArea"
+    )
+    .style.display =
+    "none";
+
+
+renderFoods();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
+```
